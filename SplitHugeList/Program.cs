@@ -5,15 +5,29 @@ namespace SplitHugeList
 {
     class Program
     {
+        private static int PIECE_SIZE = 9;
+        private static string _iterationAndRemainder;
+
         static void Main(string[] args)
         {
-            var numbers = new List<int>() {2, 4, 90, 30, 40, 29, 76, 33, 12, 34};
-            Console.WriteLine(string.Join(",",numbers));
+            var numbers = new List<int>() {2, 4, 90, 30, 40, 29, 76, 33, 12, 34, 45, 78, 98};
+            Console.WriteLine(string.Join(",", numbers));
 
-            // for (int i = 0; i < numbers.Count; i++)
-            // {
-            //     Console.WriteLine(numbers[i]);
-            // }
+            var length = numbers.Count;
+
+            var iteration = length / PIECE_SIZE;
+            var remaining = length % PIECE_SIZE;
+
+            _iterationAndRemainder = "Iteration and remainder : " + string.Join(",", iteration, remaining);
+            Console.WriteLine(_iterationAndRemainder);
+
+            for (var i = 0; i < iteration; i++)
+            {
+                Console.WriteLine(string.Join(",", numbers.GetRange(i * PIECE_SIZE, PIECE_SIZE)));
+            }
+
+            // printout reminder; 
+            Console.WriteLine("reminder: " + string.Join(",", numbers.GetRange(iteration * PIECE_SIZE, remaining)));
         }
     }
 }
