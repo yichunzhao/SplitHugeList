@@ -6,7 +6,6 @@ namespace SplitHugeList
     class Program
     {
         private static int PIECE_SIZE = 9;
-        private static string _iterationAndRemainder;
 
         static void Main(string[] args)
         {
@@ -18,8 +17,7 @@ namespace SplitHugeList
             var iteration = length / PIECE_SIZE;
             var remaining = length % PIECE_SIZE;
 
-            _iterationAndRemainder = "Iteration and remainder : " + string.Join(",", iteration, remaining);
-            Console.WriteLine(_iterationAndRemainder);
+            Console.WriteLine("Iteration and remainder : " + string.Join(",", iteration, remaining));
 
             for (var i = 0; i < iteration; i++)
             {
